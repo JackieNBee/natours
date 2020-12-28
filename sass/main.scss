@@ -1,19 +1,10 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
-
 $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 
-$color-grey: #777;
+$color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /* CSS Reset */
 *,
@@ -57,7 +48,7 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: $color-grey;
+    color: $color-grey-dark;
     padding: 3rem;
 
     /* box-sizing gets inherited by all elements */
@@ -212,7 +203,7 @@ body {
     /* move up */
     transform: translateY(-.3rem);
     /* offsetX, offsetY, blur radius, color */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
 }
 
 /* How box-shadow works:
@@ -234,12 +225,12 @@ body {
 .btn:active {
     /* push down the button a little bit */
     transform: translateY(-.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
 }
 
 .btn-white {
     background-color: $color-white;
-    color: $color-grey;
+    color: $color-grey-dark;
 }
 
 /* initial state of the ::after pseudo element */
