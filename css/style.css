@@ -8,21 +8,52 @@ Dark green: #28b485
 */
 
 /* CSS Reset */
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
+    /* to use the power of inheritance */
+    /* Because of performance. 
+    It is faster to inherit that for every element (from the body) 
+    than it is to directly select every element to set it (with the universal selector). */
+    box-sizing: inherit;
 }
+
+html {
+    /* overwrite default root font-size of the browser (16px) */
+    /* 10px is chosen to make things easier since to conver from px to rem we only need to divide by 10 */
+    /* in this way: 1rem = 10px */
+    /* also now it easier to write media queries since by changing the font-size 
+    the browser does a lot of auto work for us */
+    /* for example normally we have 10px font-size with 30px padding around the page,
+    by changing the the font-size to 5px we have automatically 15px of padding! */
+    /* it is very useful in smaller screens where we set smaller font but the layout stays consistent */
+    /* font-size: 10px; */
+
+    /* it is bad practice to set root font-size in px */
+    /* because of accessibility concern: to let the user set the font-size in the browser settings */
+    /* by default it's 16px but if the user set it to 20px it wouldn't work because we hardcoded a value */
+    /* so we need to use percentages: 62.5% of 16px = 10px */
+    /* 100% = 16px */
+    /* proportion used for value calculation: 100:16 = x:10 */
+    font-size: 62.5%;
+
+}
+
 
 /* We put font style into body because in this way we can use the power of inheritance */
 /* instead of selecting everything */
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+
+    /* box-sizing gets inherited by all elements */
+    box-sizing: border-box;
 }
 
 .header {
@@ -44,8 +75,8 @@ body {
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 /* animate the logo on hover */
@@ -54,7 +85,7 @@ body {
 } */
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -78,14 +109,14 @@ body {
     /* little hack/fix for the heading's shaky text animation */
     /* however in Chrome's last versione it seems to work fine even without this hack */
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -94,9 +125,9 @@ body {
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     /* short way */
     animation: moveInRight 1s ease-out;
@@ -107,11 +138,11 @@ body {
 
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100% {
@@ -125,11 +156,11 @@ body {
 
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {
@@ -143,7 +174,7 @@ body {
 
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {
@@ -158,20 +189,22 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* animations */
     transition: all .2s;
     /* for the absolut position of the ::after element */
     position: relative;
+    /* to restore the button's font-size 16px = 1.6rem */
+    font-size: 1.6rem
 }
 
 .btn:hover {
     /* move up */
-    transform: translateY(-3px);
+    transform: translateY(-.3rem);
     /* offsetX, offsetY, blur radius, color */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 /* How box-shadow works:
@@ -192,8 +225,8 @@ body {
 /* when clicked */
 .btn:active {
     /* push down the button a little bit */
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    transform: translateY(-.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -210,7 +243,7 @@ body {
     /* we want it to be the same */
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     /* to put it behind the parent element */
     position: absolute;
     top: 0;
