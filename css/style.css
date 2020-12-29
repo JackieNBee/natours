@@ -1,3 +1,5 @@
+/* BEM notation */
+/* Block__Element--Modifier */
 /* CSS Reset */
 *,
 *::after,
@@ -49,7 +51,7 @@ body {
   position: relative;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 4rem;
   left: 4rem; }
@@ -58,10 +60,10 @@ body {
 /* .logo-box:hover .logo {
     animation: moveInRight 1s ease-out;
 } */
-.logo {
+.header__logo {
   height: 3.5rem; }
 
-.text-box {
+.header__text-box {
   /* to center the box */
   position: absolute;
   /* top and left are relative to the parent element */
@@ -82,7 +84,7 @@ body {
   backface-visibility: hidden;
   margin-bottom: 6rem; }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
@@ -91,7 +93,7 @@ body {
   animation-duration: 1s;
   animation-timing-function: ease-out; }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -168,7 +170,7 @@ body {
   transform: translateY(-0.1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777; }
 
@@ -190,7 +192,7 @@ body {
   /* need to define transition in the initial state to affect also the other states */
   transition: all .4s; }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff; }
 
 .btn:hover::after {
@@ -199,7 +201,7 @@ body {
   /* to make the element fade out */
   opacity: 0; }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom .5s ease-out .75s;
   /* to apply animation's 0% state to the initial state */
   /* that's a fix because we're applying a deleay to the button */
