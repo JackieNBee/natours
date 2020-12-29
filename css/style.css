@@ -1,5 +1,32 @@
-/* BEM notation */
-/* Block__Element--Modifier */
+/* CSS Animations */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
 /* CSS Reset */
 *,
 *::after,
@@ -41,38 +68,6 @@ body {
   /* box-sizing gets inherited by all elements */
   box-sizing: border-box; }
 
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  /* always try to fit the width of the viewport */
-  background-size: cover;
-  /* keep the top of the image the same when resizing */
-  background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* animate the logo on hover */
-  /* .logo-box:hover .logo {
-        animation: moveInRight 1s ease-out;
-    } */ }
-  .header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__text-box {
-    /* to center the box */
-    position: absolute;
-    /* top and left are relative to the parent element */
-    /* 40% instead of 50% to make it feel more centered */
-    top: 40%;
-    left: 50%;
-    /* translate is relative to the element itself */
-    /* otherwise text STARTS at center, we want the MIDDLE of the text to be centered */
-    transform: translate(-50%, -50%);
-    /* to center the button's */
-    text-align: center; }
-
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
@@ -95,35 +90,6 @@ body {
     letter-spacing: 1.75rem;
     /* short way */
     animation: moveInRight 1s ease-out; }
-
-/* CSS Animations */
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem); }
-  80% {
-    transform: translateX(1rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem); }
-  80% {
-    transform: translateX(-1rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes moveInBottom {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
 
 .btn {
   /* normal and visited state */
@@ -194,3 +160,37 @@ body {
     /* that's a fix because we're applying a deleay to the button */
     /* so at the beginning it's still visible */
     animation-fill-mode: backwards; }
+
+/* BEM notation */
+/* Block__Element--Modifier */
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* always try to fit the width of the viewport */
+  background-size: cover;
+  /* keep the top of the image the same when resizing */
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* animate the logo on hover */
+  /* .logo-box:hover .logo {
+        animation: moveInRight 1s ease-out;
+    } */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    /* to center the box */
+    position: absolute;
+    /* top and left are relative to the parent element */
+    /* 40% instead of 50% to make it feel more centered */
+    top: 40%;
+    left: 50%;
+    /* translate is relative to the element itself */
+    /* otherwise text STARTS at center, we want the MIDDLE of the text to be centered */
+    transform: translate(-50%, -50%);
+    /* to center the button's */
+    text-align: center; }

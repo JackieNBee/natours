@@ -1,0 +1,91 @@
+.btn {
+
+    /* normal and visited state */
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        /* animations */
+        transition: all .2s;
+        /* for the absolut position of the ::after element */
+        position: relative;
+        /* to restore the button's font-size 16px = 1.6rem */
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        /* move up */
+        transform: translateY(-.3rem);
+        /* offsetX, offsetY, blur radius, color */
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        &::after {
+            /* to have more control than normal scale() */
+            transform: scaleX(1.4) scaleY(1.6);
+            /* to make the element fade out */
+            opacity: 0;
+        }
+    }
+
+    /* How box-shadow works:
+
+                offsetY
+                    ^
+                    |
+        button - - - - - shadow
+        |
+        | -> offsetX
+        |
+        shadow
+
+    */
+
+
+    /* when clicked */
+    &:active {
+        /* push down the button a little bit */
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    /* initial state of the ::after pseudo element */
+    &::after {
+        content: "";
+        /* like the normal button */
+        display: inline-block;
+        /* pseudo element is treated like a child of the button */
+        /* we want it to be the same */
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* to put it behind the parent element */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        /* need to define transition in the initial state to affect also the other states */
+        transition: all .4s;
+    }
+
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /* to apply animation's 0% state to the initial state */
+        /* that's a fix because we're applying a deleay to the button */
+        /* so at the beginning it's still visible */
+        animation-fill-mode: backwards;
+    }
+
+
+}
