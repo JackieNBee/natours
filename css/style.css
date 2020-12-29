@@ -49,32 +49,29 @@ body {
   /* keep the top of the image the same when resizing */
   background-position: top;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-/* animate the logo on hover */
-/* .logo-box:hover .logo {
-    animation: moveInRight 1s ease-out;
-} */
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  /* to center the box */
-  position: absolute;
-  /* top and left are relative to the parent element */
-  /* 40% instead of 50% to make it feel more centered */
-  top: 40%;
-  left: 50%;
-  /* translate is relative to the element itself */
-  /* otherwise text STARTS at center, we want the MIDDLE of the text to be centered */
-  transform: translate(-50%, -50%);
-  /* to center the button's */
-  text-align: center; }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* animate the logo on hover */
+  /* .logo-box:hover .logo {
+        animation: moveInRight 1s ease-out;
+    } */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    /* to center the box */
+    position: absolute;
+    /* top and left are relative to the parent element */
+    /* 40% instead of 50% to make it feel more centered */
+    top: 40%;
+    left: 50%;
+    /* translate is relative to the element itself */
+    /* otherwise text STARTS at center, we want the MIDDLE of the text to be centered */
+    transform: translate(-50%, -50%);
+    /* to center the button's */
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
@@ -83,23 +80,21 @@ body {
   /* however in Chrome's last versione it seems to work fine even without this hack */
   backface-visibility: hidden;
   margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  /* short way */
-  animation: moveInRight 1s ease-out; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* short way */
+    animation: moveInRight 1s ease-out; }
 
 /* CSS Animations */
 @keyframes moveInLeft {
@@ -130,80 +125,72 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-/* normal and visited state */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  /* animations */
-  transition: all .2s;
-  /* for the absolut position of the ::after element */
-  position: relative;
-  /* to restore the button's font-size 16px = 1.6rem */
-  font-size: 1.6rem; }
+.btn {
+  /* normal and visited state */
+  /* How box-shadow works:
 
-.btn:hover {
-  /* move up */
-  transform: translateY(-0.3rem);
-  /* offsetX, offsetY, blur radius, color */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+                offsetY
+                    ^
+                    |
+        button - - - - - shadow
+        |
+        | -> offsetX
+        |
+        shadow
 
-/* How box-shadow works:
-
-            offsetY
-                ^
-                |
-    button - - - - - shadow
-    |
-    | -> offsetX
-    |
-    shadow
-
-
-*/
-/* when clicked */
-.btn:active {
-  /* push down the button a little bit */
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: #777; }
-
-/* initial state of the ::after pseudo element */
-.btn::after {
-  content: "";
-  /* like the normal button */
-  display: inline-block;
-  /* pseudo element is treated like a child of the button */
-  /* we want it to be the same */
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  /* to put it behind the parent element */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /* need to define transition in the initial state to affect also the other states */
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  /* to have more control than normal scale() */
-  transform: scaleX(1.4) scaleY(1.6);
-  /* to make the element fade out */
-  opacity: 0; }
-
-.btn--animated {
-  animation: moveInBottom .5s ease-out .75s;
-  /* to apply animation's 0% state to the initial state */
-  /* that's a fix because we're applying a deleay to the button */
-  /* so at the beginning it's still visible */
-  animation-fill-mode: backwards; }
+    */
+  /* when clicked */
+  /* initial state of the ::after pseudo element */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /* animations */
+    transition: all .2s;
+    /* for the absolut position of the ::after element */
+    position: relative;
+    /* to restore the button's font-size 16px = 1.6rem */
+    font-size: 1.6rem; }
+  .btn:hover {
+    /* move up */
+    transform: translateY(-0.3rem);
+    /* offsetX, offsetY, blur radius, color */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      /* to have more control than normal scale() */
+      transform: scaleX(1.4) scaleY(1.6);
+      /* to make the element fade out */
+      opacity: 0; }
+  .btn:active {
+    /* push down the button a little bit */
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    content: "";
+    /* like the normal button */
+    display: inline-block;
+    /* pseudo element is treated like a child of the button */
+    /* we want it to be the same */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* to put it behind the parent element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* need to define transition in the initial state to affect also the other states */
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    /* to apply animation's 0% state to the initial state */
+    /* that's a fix because we're applying a deleay to the button */
+    /* so at the beginning it's still visible */
+    animation-fill-mode: backwards; }
