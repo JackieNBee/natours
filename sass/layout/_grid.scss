@@ -5,7 +5,7 @@
     // we use max-width insted of width;
     // if the viewport is smaller than 114rem, the row will fill 100% of the parent
     max-width: $grid-width;
-    background-color: #eee;
+    // background-color: #eee; // USED FOR TESTING
     // how to center row in viewport
     // center block element inside of another block element
     margin: 0 auto;
@@ -31,7 +31,7 @@
     // we use the attribute selector! --> best way in this case
     // select every element that has class attribute that starts with "col-"
     [class^="col-"] {
-        background-color: orangered;
+        // background-color: orangered; // USED FOR TESTING
         // since we're using a float layout we need to float the colums
         float: left;
 

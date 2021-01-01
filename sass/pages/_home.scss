@@ -1,0 +1,8 @@
+// we put it here because the about section will only be present in the homepage and nowhere else
+.section-about {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0;
+    // move up the section to fill the white triangle (blank space) created by clip-path() polygon in the header
+    // header's height (95vh) - polygon right height (75vh) = 20vh
+    margin-top: -20vh;
+}
