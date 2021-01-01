@@ -1,10 +1,20 @@
 // UTILITY CLASSES
-// reusable CSS simple classes with only one goal
+// Reusable CSS simple classes with only one goal
 
+// Center the text of children
 .u-center-text {
     text-align: center;
 }
 
-.u-margin-bottom-8 {
+// Add bottom margin
+.u-margin-bottom-big {
     margin-bottom: 8rem;
+}
+
+.u-margin-bottom-medium {
+    margin-bottom: 4rem;
+}
+
+.u-margin-bottom-small {
+    margin-bottom: 1.5rem;
 }
