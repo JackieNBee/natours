@@ -1,0 +1,61 @@
+.composition {
+    position: relative;
+
+    // .composition__photo
+    &__photo {
+        width: 55%;
+        // in rgba() .4 means 40%
+        box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: .4);
+        // add round corners to image
+        border-radius: 2px;
+        // set imgs on top of each other
+        position: absolute;
+        //reference (0;0) coordinates are on top left corner of .composition element
+
+        // default z-index
+        z-index: 10;
+
+        transition: all .2s;
+
+        // space between offset and img
+        outline-offset: 2rem;
+
+        // selecting imgs one by one
+        // .composition__photo--p1
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            // outline is like border but we can do more stuff e.g. setting the offset
+            outline: 1.5rem solid $color-primary;
+            // make in bigger and move it up a little bit
+            transform: scale(1.05) translateY(-.5rem);
+            // since it seems to be closer to the user it should cast bigger shadows
+            box-shadow: 0 2.5rem 4rem rgba($color: $color-black, $alpha: .5);
+            // put the img on top of others
+            z-index: 20;
+        }
+
+    }
+
+    // When hovering on a composition photo, scale down the others
+    // .composition:hover .composition__photo:not(:hover)
+    // EXPLANATION
+    // when hovering on composition select the composition photo which is not hovered
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+
+}
