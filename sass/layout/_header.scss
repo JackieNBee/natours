@@ -4,6 +4,7 @@
 // Block
 .header {
     height: 95vh;
+    // How to put a gradiant over a background image:
     background-image: linear-gradient(to right bottom,
             /* set opacity to 80% so we can see background img */
             rgba($color-primary-light, 0.8),

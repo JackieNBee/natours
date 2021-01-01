@@ -6,3 +6,30 @@
     // header's height (95vh) - polygon right height (75vh) = 20vh
     margin-top: -20vh;
 }
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom,
+            /* set opacity to 80% so we can see background img */
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)),
+        url(../img/nat-4.jpg);
+    background-size: cover;
+
+    // Alternative method to do skew design like the header instead of using clip-path()
+    // 1) We skew the whole section
+    transform: skewY(-7deg);
+
+    // move the section up to cover triangular blank space created by skewing
+    margin-top: -10rem;
+
+    // 2) We skew back the direct child (row) back to normal
+    // select all the direct children of .section-features
+    &>* {
+        transform: skewY(7deg);
+    }
+
+    // if we used directly & * we would have selected all the children of the children
+    // leading to a wrong design --> every descendants being skewed too much
+
+}

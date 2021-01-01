@@ -1,0 +1,31 @@
+.feature-box {
+    background-color: rgba($color-white, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    transition: transform .2s;
+
+    &__icon {
+        // the icon is actually a text
+        font-size: 6rem;
+        margin-bottom: .5rem;
+        // How to put gradient as text color:
+        // 1) Set gradient as a background image
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        // 2) Set the element not to occupy 100% of available width --> set inline-block
+        display: inline-block;
+        // 3) Set the background only to apply to the text / background clipped to the text
+        background-clip: text;
+        -webkit-background-clip: text;
+        // 4) Set text color to transparent in order to see only background's one
+        color: transparent;
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+
+
+}
