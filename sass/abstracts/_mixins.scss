@@ -1,0 +1,14 @@
+// How does clearfix actually work?
+// it appends a pseudo element after the element
+// which will clear the floats
+@mixin clearfix {
+    &::after {
+        // we need to define a content otherwise it doesn't work
+        content: "";
+        // we use display: table because it's the standard version of clearfix
+        display: table;
+        // cleat both left and right
+        // the property that actually performs the fix
+        clear: both;
+    }
+}
