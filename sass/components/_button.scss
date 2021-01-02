@@ -60,6 +60,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     /* initial state of the ::after pseudo element */
     &::after {
         content: "";

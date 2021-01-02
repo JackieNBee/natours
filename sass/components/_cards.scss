@@ -1,5 +1,7 @@
 .card {
 
+    // *** FUNCTIONALITIES ***
+
     // to improve the Card rotation animation and to make it look like moving towards you
     // REMEMBER to add a big value
     // smaller the value, more dramatic the effect
@@ -49,6 +51,16 @@
                 // linear gradient can be used only for backgroud-image and not background-color
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
+
+            &-2 {
+                // linear gradient can be used only for backgroud-image and not background-color
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                // linear gradient can be used only for backgroud-image and not background-color
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
         }
 
     }
@@ -66,7 +78,7 @@
         transform: rotateY(0deg);
     }
 
-    // FRONT SIDE STYLING
+    // *** FRONT SIDE STYLING ***
     &__picture {
         background-size: cover;
         // height of the img
@@ -78,17 +90,25 @@
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
+        // to fix clip path behaviour/bug in older Chrome versions
+        // it would remove top left radius
+        // border-top-left-radius: 3px;
+        // border-top-right-radius: 3px;
+
         // First Card
         &--1 {
-            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+                url(../img/nat-5.jpg);
         }
 
         &--2 {
-            background-image: url(../img/nat-5.jpg)
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark),
+                url(../img/nat-6.jpg);
         }
 
         &--3 {
-            background-image: url(../img/nat-5.jpg)
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+                url(../img/nat-7.jpg);
         }
     }
 
@@ -125,6 +145,20 @@
                     rgba($color-secondary-light, .85),
                     rgba($color-secondary-dark, .85));
         }
+
+        &--2 {
+            // slightly transparent background gradient
+            background-image: linear-gradient(to right bottom,
+                    rgba($color-primary-light, .85),
+                    rgba($color-primary-dark, .85));
+        }
+
+        &--3 {
+            // slightly transparent background gradient
+            background-image: linear-gradient(to right bottom,
+                    rgba($color-tertiary-light, .85),
+                    rgba($color-tertiary-dark, .85));
+        }
     }
 
     // Card details
@@ -154,6 +188,37 @@
                 }
             }
         }
+    }
+
+    // *** BACK SIDE STYLING ***
+    &__cta {
+        // to center it vertically and horizontally
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // to fix button width
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        // in this case text align can be commented since it's already defined in the parent (cta)
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+        // could also add u-margin-bottom-big utility class in HTML
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        // Good Practice: make huge text thin
+        font-weight: 100;
     }
 
 

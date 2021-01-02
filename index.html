@@ -136,6 +136,7 @@
         </section>
 
         <section class="section-tours">
+
             <div class="u-center-text u-margin-bottom-big">
                 <h2 class="heading-secondary">
                     Most popular tours
@@ -143,6 +144,8 @@
             </div>
 
             <div class="row">
+
+                <!-- FIRST CARD -->
                 <div class="col-1-of-3">
                     <!-- again, we're not touching the grid system, for customizationa we create a new div -->
                     <!-- this card is going to rotate on hover -->
@@ -170,17 +173,96 @@
                             </div>
                         </div>
                         <div class="card__side card__side--back card__side--back-1">
-                            BACK
+                            <!-- cta = call to action -->
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">Only</p>
+                                    <p class="card__price-value">$297</p>
+                                </div>
+                                <a href="#" class="btn btn--white">Book now!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- SECOND CARD -->
                 <div class="col-1-of-3">
-                    Col 1 of 3
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--2">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--2">
+                                    The Forest Hiker
+                                </span>
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>7 day tour</li>
+                                    <li>Up to 40 people</li>
+                                    <li>6 tour guides</li>
+                                    <li>Sleep in provided tents</li>
+                                    <li>Difficulty: medium</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-2">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">Only</p>
+                                    <p class="card__price-value">$497</p>
+                                </div>
+                                <a href="#" class="btn btn--white">Book now!</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- THIRD CARD -->
                 <div class="col-1-of-3">
-                    Col 1 of 3
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--3">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--3">
+                                    The Snow Adventurer
+                                </span>
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>5 day tour</li>
+                                    <li>Up to 15 people</li>
+                                    <li>3 tour guides</li>
+                                    <li>Sleep in provided tents</li>
+                                    <li>Difficulty: hard</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-3">
+                            <!-- cta = call to action -->
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">Only</p>
+                                    <p class="card__price-value">$897</p>
+                                </div>
+                                <a href="#" class="btn btn--white">Book now!</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
+            <!-- if we put the margin top big utility class it would be kinda useless in this case -->
+            <!-- because the div above is no more the last child so it will have u-margin-bottom-big applied -->
+            <div class="u-center-text u-margin-top-huge">
+                <!-- This link could lead to a new page with all the tours presented as cards -->
+                <a href="#" class="btn btn--green">Discover all tours</a>
+            </div>
+
         </section>
 
     </main>

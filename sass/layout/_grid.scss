@@ -13,6 +13,9 @@
     // we want only the last row NOT to have bottom margin
     // it's time to use the not() pseudo-class
     // select everything except the last child
+    // if the last child in the container is not a row (e.g. a button)
+    // then the last row will have bottom margin obviously
+    // so it's better to select the last div with class="row"
     &:not(:last-child) {
         // some gutter between rows
         margin-bottom: $gutter-vertical;
