@@ -11,16 +11,15 @@
     // to fix the collapsed height of the card since its children are absolute positioned (taken out from natural flow)
     // unlike for floats we cannot use clearfix
     // so we need to set the same height of its children
-    height: 50rem;
+    height: 52rem;
 
     // to make the perspective property work
     // we need to apply the rotation on a child element of .card
     // .card__side
     &__side {
 
-        color: #fff;
-        font-size: 2rem;
-        height: 50rem;
+        // increased from 50rem to have some more space from last card detail
+        height: 52rem;
         transition: all .8s ease;
         // to position the two sides at the top of each other
         position: absolute;
@@ -32,6 +31,8 @@
         // to hide the backside of the element when flipped
         backface-visibility: hidden;
         border-radius: 3px;
+        // to fix card picture from hiding card's round corners
+        overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: .15);
 
         &--front {
@@ -56,12 +57,103 @@
     // when hovering the card, flip the front side
     // .card:hover .card__side--front
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        // flip to the opposite direction
+        transform: rotateY(-180deg);
     }
 
     // flip it back
     &:hover &__side--back {
         transform: rotateY(0deg);
+    }
+
+    // FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        // height of the img
+        height: 23rem;
+        // modern CSS property for blending linear-gradient with img instead of editing the img in Photoshop
+        background-blend-mode: screen;
+        // like in the header
+        // first put the version with prefix
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        // First Card
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            background-image: url(../img/nat-5.jpg)
+        }
+
+        &--3 {
+            background-image: url(../img/nat-5.jpg)
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+        // to position the heading above the card picture to the top right
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        // since we're at it let's align it to the right
+        text-align: right;
+
+        // decrease the width to break the text into a new line
+        width: 75%;
+    }
+
+    // needed to use box-decoration-break
+    &__heading-span {
+
+        // adding some more space to make it easier to brake the text into a new line
+        padding: 1rem 1.5rem;
+
+        // treat a text line break as a new box element
+        // in this case it fix the left and right padding spaces of the line breaks
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1 {
+            // slightly transparent background gradient
+            background-image: linear-gradient(to right bottom,
+                    rgba($color-secondary-light, .85),
+                    rgba($color-secondary-dark, .85));
+        }
+    }
+
+    // Card details
+    &__details {
+        // add some more space between card details and card heading
+        padding: 3rem;
+
+        ul {
+            // remove default underline
+            list-style: none;
+            // make the custom underline no to occupy 100% of space
+            width: 80%;
+            // center block element inside of block element
+            margin: 0 auto;
+
+            li {
+                // align the text to the center of the parent
+                text-align: center;
+                font-size: 1.5rem;
+                // space between text and custom underline
+                padding: 1rem;
+
+                // add custom underline to every <li> except the last one
+                &:not(:last-child) {
+                    // custom underline
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
     }
 
 

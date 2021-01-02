@@ -16,7 +16,8 @@
     background-position: top;
     position: relative;
 
-
+    // to add the oblique cut style
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     // & = .header
