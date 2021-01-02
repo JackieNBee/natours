@@ -1,0 +1,68 @@
+.card {
+
+    // to improve the Card rotation animation and to make it look like moving towards you
+    // REMEMBER to add a big value
+    // smaller the value, more dramatic the effect
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+
+    // to make children's position absolute work
+    position: relative;
+    // to fix the collapsed height of the card since its children are absolute positioned (taken out from natural flow)
+    // unlike for floats we cannot use clearfix
+    // so we need to set the same height of its children
+    height: 50rem;
+
+    // to make the perspective property work
+    // we need to apply the rotation on a child element of .card
+    // .card__side
+    &__side {
+
+        color: #fff;
+        font-size: 2rem;
+        height: 50rem;
+        transition: all .8s ease;
+        // to position the two sides at the top of each other
+        position: absolute;
+        top: 0;
+        left: 0;
+        // since we gave absolute position, the element fits only the space needed by the content
+        // to fix this issue
+        width: 100%;
+        // to hide the backside of the element when flipped
+        backface-visibility: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: .15);
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        // the back side needs to be alreadt flipped
+        &--back {
+
+            // flips by 180deg
+            transform: rotateY(180deg);
+
+            &-1 {
+                // linear gradient can be used only for backgroud-image and not background-color
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+        }
+
+    }
+
+    // How to rotate a Card on hover
+    // when hovering the card, flip the front side
+    // .card:hover .card__side--front
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+
+    // flip it back
+    &:hover &__side--back {
+        transform: rotateY(0deg);
+    }
+
+
+}
