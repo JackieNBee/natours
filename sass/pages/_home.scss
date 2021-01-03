@@ -45,3 +45,38 @@
     position: relative;
     padding: 15rem 0;
 }
+
+.section-book {
+    padding: 15rem 0;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book {
+    // SOLID COLOR GRADIENT technique
+    // to do the oblique cut style
+    // basically it's a linear gradient applied on the image
+    // half with color, half transparent
+    // magic happens when we put the two colors at 50%
+    // to be more precised about color gradient direction, we can use degrees instead of e.g. "to left"...
+    // to put the right URL: imagine we're in style.css
+    background-image: linear-gradient(105deg,
+            rgba($color-white, .9) 0%,
+            rgba($color-white, .9) 50%,
+            transparent 50%),
+        url(../img/nat-10.jpg);
+    // cover = 100% -> they are interchangeable
+    background-size: 100%;
+    // TODO: put 3px into a variable since we're using it a lot
+    border-radius: 3px;
+    // if you have a dark background, the shadow should also be darker
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+
+    height: 50rem;
+
+    &__form {
+        // since the form needs to be in the colored half
+        width: 50%;
+        padding: 6rem;
+    }
+
+}
