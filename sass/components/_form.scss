@@ -1,0 +1,81 @@
+.form {
+
+    // put some bottom space between form groups
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+
+    &__input {
+        font-size: 1.5rem;
+        // input element has a strange behaviour: it doesn't inherit font properties
+        // so we have to put inherit manually
+        font-family: inherit;
+        color: inherit;
+        // better to have more space on the sides
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        // none = 0
+        border: none;
+        // to fix next group being pushed down because of adding a bottom border
+        border-bottom: 3px solid transparent;
+        // to have long inputs
+        width: 90%;
+        // to put the label on a new line
+        display: block;
+
+        // focus state
+        // when we click on the input
+        &:focus {
+            // by default it's like a blue border
+            // we don't want it
+            outline: none;
+            // but an outline on :focus is important for accessibility when users use keyboards
+            // so we add a custom one
+            box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .1);
+            // add a custom underline
+            border-bottom: 3px solid $color-primary;
+
+            // leverage the browser ability to know if an input is valit or not
+            // when not valid, change the bottom border's color
+            &:invalid {
+                border-bottom: 3px solid $color-secondary-dark;
+            }
+        }
+
+        // select and style input's placeholder
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+
+    }
+
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        // to align it to the input's text above
+        margin-left: 2rem;
+        margin-top: .7rem;
+        // in order to use box model properties e.g. to translate wouldn't work
+        display: block;
+        transition: all .3s;
+    }
+
+    // when the input's placeholder is visible, select the adjacent/immediately after sibling (label)
+    // it works only when <label> is put after <input> in HTML otherwise it doesn't work
+    // ~ is also used for selecting sibling but if it's not immediately after   
+    &__input:placeholder-shown+&__label {
+        // to make it transparent
+        opacity: 0;
+        // to remove it from the page but it still takes space
+        // Why we have also to add opacity and not only use visibility? Because we cannot animate visibility
+        // also with only opacity: 0, the user could still select the transparent text
+        visibility: hidden;
+        // to make the label move down animation when we start typing
+        transform: translateY(-4rem);
+    }
+
+
+}
