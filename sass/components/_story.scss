@@ -1,0 +1,57 @@
+.story {
+    width: 75%;
+    // center block element inside of block element
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color: $color-black, $alpha: .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    // to recover the space occupied by translating the shape (6rem + 3rem)
+    padding-left: 9rem;
+    font-size: $default-font-size;
+
+    // to have the oblique cut style applied to the left and right sides of the story
+    transform: skewX(-12deg);
+
+    // to undo the skew effect on the content
+    // actually it will work only for the text and not for the img
+    // because it already has a transform property and in CSS we cannot have two of them at the same time
+    // so we need to undo the effect one by one
+    // &>* {
+    //     transform: skewX(12deg);
+    // }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        // background-color: orangered; // USED FOR TESTING
+        float: left;
+
+        // make the outside shape to be a circle to create nice effect with nearby text
+        // cicle(radius at x y)
+        // in this case radius = half width at vertcal and horizontal center
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        // to make shape-outside work we need the element to be floated, to have defined width and height
+        shape-outside: circle(50% at 50% 50%);
+
+        // to make the shape to be a circle
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        // to add some space to the right of a floated element
+        // better not to add margins but to translate it
+        // and undo the skew effect
+        transform: translateX(-3rem) skewX(12deg);
+    }
+
+    &__img {
+        // to make the image fill the container
+        height: 100%;
+    }
+
+    &__text {
+        // to undo the skew effect
+        transform: skewX(12deg);
+    }
+
+}
