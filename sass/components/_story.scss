@@ -21,6 +21,8 @@
     //     transform: skewX(12deg);
     // }
 
+
+
     &__shape {
         width: 15rem;
         height: 15rem;
@@ -42,16 +44,69 @@
         // better not to add margins but to translate it
         // and undo the skew effect
         transform: translateX(-3rem) skewX(12deg);
+
+        // to make the caption absolute position work
+        position: relative;
     }
 
     &__img {
         // to make the image fill the container
         height: 100%;
+        // to make the img more centered inside of the shape
+        // zoom it a little bit so we can zoom out in the animation
+        transform: translateX(-4rem) scale(1.4);
+        // used to fix the img after translating it --> bug fixed so no needed anymore
+        //backface-visibility: hidden;
+
+        // enable the animations
+        transition: all .5s;
+
     }
 
     &__text {
         // to undo the skew effect
         transform: skewX(12deg);
+    }
+
+    &__caption {
+        // to position horizontally centered
+        // not vertically centered in order to create the move-up animation
+        // above the img
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        // to make the text pefectly aligned at the center of the figure shape
+        text-align: center;
+        // for the animation needs to be initially hidded
+        opacity: 0;
+        // enable the animations
+        transition: all .5s;
+
+        // used to fix the shaky animation --> bug fixed so no needed anymore
+        //backface-visibility: hidden;
+    }
+
+    // when hovering the story, the caption slowly turns visible as it moves up
+    // .story:hover .story__caption
+    &:hover &__caption {
+        // fully visible
+        opacity: 1;
+        // becomes horizontally and vertically centered
+        transform: translate(-50%, -50%);
+    }
+
+    // when hovering the story, zoom out the img a little bit
+    &:hover &__img {
+        // zoom the image out while keeping it more centered
+        transform: translateX(-4rem) scale(1);
+        // blur the image and make it darker
+        // blur(): more the px --> blurrier the img
+        // brightness(): under 100% --> makes img darker || above 100% --> makes the img brighter
+        filter: blur(3px) brightness(80%);
     }
 
 }
