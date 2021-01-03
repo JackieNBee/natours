@@ -267,6 +267,18 @@
 
         <section class="section-stories">
 
+            <!-- background video of the section -->
+            <div class="bg-video">
+                <!-- we don't define the source attribute here because we want to put more sources -->
+                <video class="bg-video__content" autoplay muted loop>
+                    <!-- if the browser doesn't support mp4, it will play the webm version -->
+                    <source src="img/video.mp4" type="video/mp4">
+                    <source src="img/video.webm" type="video/webm">
+                    <!-- if the browser doesn't support videos, this text will appear -->
+                    Your browser is not supported!
+                </video>
+            </div>
+
             <div class="u-center-text u-margin-bottom-big">
                 <h2 class="heading-secondary">
                     We make people genuinely happy

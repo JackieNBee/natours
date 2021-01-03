@@ -1,0 +1,28 @@
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // just like the parent (section)
+    height: 100%;
+    width: 100%;
+    // to be sure every other elements are above
+    z-index: -1;
+    // create almost transparent background video
+    opacity: .15;
+
+    // used in the course to fix bg-video overflowing after applying object-fit
+    // but now the bug is fixed
+    // overflow: hidden;
+
+    &__content {
+        // to fix the video overflowing from its container
+        // by making both have the same size
+        height: 100%;
+        width: 100%;
+        // to fill entire parent element while mantaining the same aspect ratio
+        // similar to background-size: cover for background-image
+        // object-fit works for HTML elements
+        object-fit: cover;
+    }
+
+}
