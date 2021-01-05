@@ -1,6 +1,9 @@
 .btn {
 
-    /* normal and visited state */
+    // need simple & for being able to select also <button> element
+    // since it doesn't have :link and :visited
+    &,
+    /* normal and visited state of <a> element */
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -14,6 +17,10 @@
         position: relative;
         /* to restore the button's font-size 16px = 1.6rem */
         font-size: $default-font-size;
+
+        // Style when .btn is applied to a <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -45,7 +52,11 @@
 
 
     /* when clicked */
-    &:active {
+    // :active and :focus should have the same style
+    // :focus is needed to remove the default blue outline of <button> elements
+    &:active,
+    &:focus {
+        outline: none;
         /* push down the button a little bit */
         transform: translateY(-.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);

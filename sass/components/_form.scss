@@ -24,6 +24,8 @@
         width: 90%;
         // to put the label on a new line
         display: block;
+        // add animation for displaying underline on :focus
+        transition: all .3s;
 
         // focus state
         // when we click on the input
@@ -77,5 +79,72 @@
         transform: translateY(-4rem);
     }
 
+    // radio group = <input> + <label>
+    &__radio-group {
+        // to display them side by side instead of using float
+        // with 50% it doesn't work
+        width: 49%;
+        // to display them side by side instead of using float
+        display: inline-block;
+    }
+
+    &__radio-input {
+        // hide the original input
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+
+        position: relative;
+        // to make some space on the right for the custom radio otherwise the two will overlap each other
+        padding-left: 4.5rem;
+    }
+
+    // custom radio button
+    // it's made by two parts
+    &__radio-button {
+        // to make an "empty" cicle
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        // to make it use the properties defined above, we need to display it as a block element
+        display: inline-block;
+
+        // to position the custom radio button
+        position: absolute;
+        top: -.4rem;
+        left: 0;
+
+
+        // inner filled circle that appears when input is selected
+        &::after {
+            content: "";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            // to position it at the center of the custom radio
+            // position: absolute works even if the parent is using position: absolute
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            // to make it initially invisible
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    // as soon as the original radio is checked, check also the custom one
+    // TRANSLATION: when orinal radio is checked, select the sibling radio-label and select its child's ::after
+    // using ~ or + this time is irrelevant
+    // .form__radio-input:checked ~ .form__radio-label .form__radio-button::after
+    &__radio-input:checked~&__radio-label &__radio-button::after {
+        opacity: 1;
+    }
 
 }
