@@ -1,0 +1,139 @@
+.navigation {
+    &__checkbox {
+        // hide the checkbox
+        display: none;
+    }
+
+    &__button {
+        background-color: $color-white;
+        // to make a circle bigger than the initial background in order to cover it
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        // to cover the navigation background
+        z-index: 2000;
+    }
+
+    &__background {
+        // to make a circle
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+
+        // to make it not change position when we scroll
+        // like absolute, the element is taken out from the natural flow
+        // so we can use top, left... to specify the position on the page
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        // like linear-gradient but gradient starts from the center
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        // very high value to make sure it's above any other element
+        z-index: 1000;
+
+        // to make it cover the entire page
+        // could not cover the whole page on very large screens
+        transform: scale(80);
+    }
+
+    &__nav {
+        // to make it full screen
+        height: 100vh;
+        // OPTIONAL: since it's a block element and by default it occupies all the available space
+        width: 100%;
+        // to make it stay on the same position even on scrolling
+        position: fixed;
+        top: 0;
+        // left:0 or right:0 ... doesn't matter
+        right: 0;
+        // needs to stay between the nav background and the nav button
+        z-index: 1500;
+    }
+
+    &__list {
+        // vertically and horizontally centered on the page
+        // TODO: put this code into a mixin since it's being used quite frequently
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // to remove the default side dots from le list
+        list-style: none;
+        // to align the list text to the center
+        text-align: center;
+    }
+
+    &__item {
+        // make some space between nav links
+        margin: 1rem;
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            // to make padding and transform effect work
+            // because by default is inline so it's limited
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            // the remove the default underline
+            text-decoration: none;
+            text-transform: uppercase;
+
+            // to create the oblique cut style we use again the...
+            // SOLID COLOR GRADIENT technique
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            // this time instead of making an img fill the container
+            // we want to increse its value to fill the container with the first color of the linear gradient
+            // since the first value is 50% of the container we have to make it double
+            // so we double the background size (200%)
+            // but we need 220+% because we rotated the colors a little bit (120deg)
+            background-size: 220%;
+            // to create the animation of shifting the second linear gradient color from right to left
+            transition: all .4s;
+
+            // breaking the rules with <span> without a class
+            // we put the section number inside <span>
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active {
+            // shifts the second linear gradient color from right to left
+            background-position: 100%;
+            // to be able to see the text after changing the background color
+            color: $color-primary;
+            // move a little bit to the right
+            transform: translateX(1rem);
+
+            /*
+
+            For understanding better the background-position property
+            from https: //www.w3schools.com/cssref/pr_background-position.asp
+
+            The background-position property sets the starting position of a background image. 
+            Tip: By default, a background-image is placed at the top-left corner of an element,
+            and repeated both vertically and horizontally.
+            
+            Value: x% y%
+            The first value is the horizontal position and the second value is the vertical. 
+            The top left corner is 0% 0%. The right bottom corner is 100% 100%. 
+            If you only specify one value, the other value will be 50%. 
+            Default value is: 0% 0%.
+            
+            */
+
+        }
+
+    }
+
+}

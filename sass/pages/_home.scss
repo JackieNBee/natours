@@ -14,6 +14,7 @@
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.8)),
         url(../img/nat-4.jpg);
+    // Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges
     background-size: cover;
 
     // Alternative method to do skew design like the header instead of using clip-path()
