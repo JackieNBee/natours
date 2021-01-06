@@ -17,6 +17,9 @@
         z-index: 2000;
         // create some shadow
         box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: .1);
+        // to horizontally center the button's icon (3 lines)
+        text-align: center;
+        cursor: pointer;
     }
 
     &__background {
@@ -153,6 +156,7 @@
         }
     }
 
+    // FUNCTIONALITY
     // when the checkbox is checked select the navigation background
     // we use ~ since the background is not an adjacent sibling of the checkbox
     &__checkbox:checked~&__background {
@@ -167,5 +171,109 @@
         opacity: 1;
         width: 100%;
     }
+
+    // ICON
+    // we have a <span> element and style its ::before and ::after pseudo-elements
+    // instead of creating two more elements in the HTML
+    // nav__icon::before = top line
+    // nav__icon = middle line
+    // nav__icon::after = bottom line
+    &__icon {
+        position: relative;
+        // to center more the icon
+        // could have also used translate()
+        margin-top: 3.5rem;
+
+        // create the three lines icon
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            // put px because we always want this size no matter what the base size is
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+
+            // put transition here if you want to affect the middle line's disappearing animation
+            // make the :hover and :checked animations work
+            transition: all .2s;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            // put at the right position
+            position: absolute;
+            left: 0;
+
+            // put transition here if you DON'T want to affect the middle line's disappearing animation
+            // make the :hover and :checked animations work
+            // transition: all .2s;
+
+        }
+
+        // top line initial vertical position
+        &::before {
+            // could have also used translate()
+            top: -.8rem;
+
+            // we didn't need to use transform-origin property but it can be useful sometimes
+            // it changes the point where the transformation begins e.g. during rotations
+            // by default the point is the center
+            // transform-origin: right;
+        }
+
+        // bottom line initial vertical position
+        &::after {
+            // could have also used translate()
+            top: .8rem;
+        }
+
+    }
+
+    // when hovering the nav button, select the first line of the icon (which is a child of the button)
+    &__button:hover &__icon::before {
+        // move the top line a little bit up
+        top: -1rem;
+    }
+
+    // when hovering the nav button, select the third line of the icon (which is a child of the button)
+    &__button:hover &__icon::after {
+        // move the bottom line a little bit down
+        top: 1rem;
+    }
+
+    // when the checkbox is checked, select its adjacent sibling's (button) child (icon)
+    &__checkbox:checked+&__button &__icon {
+        // make the icon middle line disappear
+        // in order to do that we don't change its size because ::before and ::after depend on that
+        background-color: transparent;
+
+    }
+
+    // How to make a cross with the first and last line
+
+    &__checkbox:checked+&__button &__icon::before {
+        // move it to the center (to the hidden middle line's position)
+        top: 0;
+        // then rotate it
+        // transform: rotate(45deg);
+
+        // to make the rotation more dramatic 
+        // 180deg - 45deg = 135deg = 3/4 of 180deg
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked+&__button &__icon::after {
+        // move it to the center (to the hidden middle line's position)
+        top: 0;
+        // then rotate it
+        // transform: rotate(-45deg);
+
+        // to make the rotation more dramatic 
+        // 180deg - 45deg = 135deg = 3/4 of 180deg
+        transform: rotate(-135deg);
+    }
+
 
 }

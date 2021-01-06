@@ -23,7 +23,10 @@
         <!-- Checkbox Hack -->
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
         <!-- label linked with checkbox -->
-        <label for="navi-toggle" class="navigation__button">MENU</label>
+        <label for="navi-toggle" class="navigation__button">
+            <!-- we'll create the icon using a <span> and its ::before and ::after pseudo-elements -->
+            <span class="navigation__icon">&nbsp;</span>
+        </label>
         <!-- navigation menu button background -->
         <div class="navigation__background">&nbsp;</div>
 
