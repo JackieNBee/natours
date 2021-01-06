@@ -15,6 +15,8 @@
         right: 6rem;
         // to cover the navigation background
         z-index: 2000;
+        // create some shadow
+        box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: .1);
     }
 
     &__background {
@@ -34,9 +36,10 @@
         // very high value to make sure it's above any other element
         z-index: 1000;
 
-        // to make it cover the entire page
-        // could not cover the whole page on very large screens
-        transform: scale(80);
+        // cubic-bezier() lets us customize animation's timing function even more!
+        // this cubic-bezier is called "easeInOutQuint"
+        transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
+
     }
 
     &__nav {
@@ -47,10 +50,23 @@
         // to make it stay on the same position even on scrolling
         position: fixed;
         top: 0;
-        // left:0 or right:0 ... doesn't matter
-        right: 0;
+        // two porpouses: for position and for the animation of moving the list from the left 
+        left: 0;
         // needs to stay between the nav background and the nav button
         z-index: 1500;
+        // background-color: orangered; // --> FOR TESTING PORPOUSES: to see the behaviour of the nav during the animation
+
+
+        // to make it transparent
+        opacity: 0;
+        // we use a different technique to make the nav disappear at the beginning
+        // instead of visibility: hidden we reduce the width to 0
+        // visibility: hidden;
+        width: 0;
+
+        // put "all" to animate both opacity and width changing
+        // this cubic-bezier is called "easeInOutBack" and it makes the nav move a little bit more on the right during the animation
+        transition: all .8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
     }
 
     &__list {
@@ -64,6 +80,7 @@
         list-style: none;
         // to align the list text to the center
         text-align: center;
+        width: 100%;
     }
 
     &__item {
@@ -94,7 +111,8 @@
             // since the first value is 50% of the container we have to make it double
             // so we double the background size (200%)
             // but we need 220+% because we rotated the colors a little bit (120deg)
-            background-size: 220%;
+            // set to 250% to get rid of the of the second color appearing a little bit in the nav's closing animation
+            background-size: 250%;
             // to create the animation of shifting the second linear gradient color from right to left
             transition: all .4s;
 
@@ -133,7 +151,21 @@
             */
 
         }
+    }
 
+    // when the checkbox is checked select the navigation background
+    // we use ~ since the background is not an adjacent sibling of the checkbox
+    &__checkbox:checked~&__background {
+        // to make the background cover the entire page
+        // could not cover the whole page on very large screens
+        transform: scale(80);
+    }
+
+    // when the checkbox is checked select the navigation
+    &__checkbox:checked~&__nav {
+        // make the navigation appear again
+        opacity: 1;
+        width: 100%;
     }
 
 }
