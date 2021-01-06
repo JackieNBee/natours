@@ -1,0 +1,88 @@
+.footer {
+    background-color: $color-grey-dark-3;
+    // not much padding because it's less important than other sections
+    padding: 10rem 0;
+    font-size: 1.4rem;
+    color: $color-grey-light-1;
+
+    &__logo-box {
+        // to center the logo img
+        // which is an inline element that behaves like text
+        text-align: center;
+        // to put some space under the logo
+        // we could have also used u-margin-bottom-big in the HTML
+        margin-bottom: 8rem;
+
+
+    }
+
+    &__logo {
+        width: 15rem;
+        height: auto;
+    }
+
+    &__navigation {
+        // put a line above the navigation section
+        border-top: 1px solid $color-grey-dark;
+        // to give some space between the line and the list
+        padding-top: 2rem;
+        // to make the line as long as the list
+        // since inline-bock elements occupy only the space the content needs
+        display: inline-block;
+    }
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        // we want the items side by side
+        display: inline-block;
+
+        // to give some space between them except the last one
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__link {
+
+        // normal and visited state
+        &:link,
+        &:visited {
+            color: inherit;
+            // same background color of the footer to cover the text below during the hover effect
+            // because by default it's transparent
+            background-color: $color-grey-dark-3;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+
+            // to create the animation when hovered
+            transition: all .2s;
+        }
+
+        // when hovered or clicked
+        &:hover,
+        &:active {
+            color: $color-primary;
+            // darker the background, darker should also be the box-shadow for better visibility
+            box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .4);
+
+            // add rotation and scale effect
+            transform: rotate(5deg) scale(1.3);
+        }
+    }
+
+    &__copyright {
+        // put a line above the copyright section
+        border-top: 1px solid $color-grey-dark;
+        // to give some space between the line and the list
+        padding-top: 2rem;
+
+        // to make the copyright part a little bit more symmetric with the navigation one
+        // reduce the width and float the content to the right
+        width: 80%;
+        float: right;
+    }
+}
