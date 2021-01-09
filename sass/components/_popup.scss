@@ -1,5 +1,8 @@
 .popup {
 
+    // POPUP = POPUP background + POPUP content
+
+    // this is for styling the transparant background of the popup
     height: 100vh;
     width: 100%;
     position: fixed;
@@ -9,8 +12,17 @@
     // put it on top of everything
     z-index: 9999;
 
+    // hide the popup initially
+    opacity: 0;
+    visibility: hidden;
+
+    // create popup's background animation
+    transition: all .3s;
+
+    // this is the content box of the popup
     &__content {
         @include absCenter;
+
         width: 75%;
         // height: 50rem; // --> for TESTING porpouses
         background-color: $color-white;
@@ -22,6 +34,18 @@
         // fix the round borders being covered by img
         // hide everything overflowing the container
         overflow: hidden;
+
+        // hide the popup content initially and reduce its size
+        // for creating the animation of the popup going towards the user
+        opacity: 0;
+        // need to repeate translate(...) even if it's already included in asbCenter mixin
+        // because in a single declaration cannot be more than one transform
+        // so scale() wouldn't work
+        transform: translate(-50%, -50%) scale(.25);
+
+        // for creating the animation of the popup going towards the user
+        // add a little delay: allow the background to come in a little and then starts the content's animation
+        transition: all .5s .2s;
     }
 
     // it's important that these two parts make roughly 100%
@@ -79,6 +103,43 @@
         hyphens: auto;
 
         // in reality we should not put prefixes manually, instead we should use tools such as Autoprefixer
+    }
+
+    // when popup becomes the target (#popup in the URL), make the it appear on the page 
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // when the popup becomes the target, select its content
+    &:target &__content {
+        // make the popup content appear with the right size
+        // for creating the animation of the popup going towards the user
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+
+        &:link,
+        &:visited {
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            // the close "icon" is just a text
+            // by default its height is greater than the text itself
+            // we need to reduce it for fixing the position issue
+            line-height: 1;
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+
     }
 
 }
