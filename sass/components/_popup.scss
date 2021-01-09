@@ -1,0 +1,84 @@
+.popup {
+
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color: $color-black, $alpha: .8);
+    // put it on top of everything
+    z-index: 9999;
+
+    &__content {
+        @include absCenter;
+        width: 75%;
+        // height: 50rem; // --> for TESTING porpouses
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color: $color-black, $alpha: .2);
+        border-radius: .3rem;
+        // to make the children behave like table cells
+        // fake a table instead of using <table> in HTML
+        display: table;
+        // fix the round borders being covered by img
+        // hide everything overflowing the container
+        overflow: hidden;
+    }
+
+    // it's important that these two parts make roughly 100%
+    // we want them side by side and having the same height
+    // we don't apply float on both since the right side height would only be determined by its content
+    // so we use display:table to make the behave like table cells and achieving our goal
+
+    &__left {
+        // the left part should be 1/3 of the container
+        width: 33.333333%;
+        // to behave like a table cell
+        display: table-cell;
+    }
+
+    &__right {
+        // the right part should be 2/3 of the container
+        width: 66.6666667%;
+        display: table-cell;
+        // verical center the content
+        // make this side have "technically" the same height of the other side
+        vertical-align: middle;
+        padding: 3rem 5rem;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        font-size: 1.4rem; // 14px
+        margin-bottom: 4rem;
+
+        // COLOMN LAYOUT
+
+        // set number of columns
+        -moz-column-count: 2;
+        // set the gap between them
+        -moz-column-gap: 4rem; // --> by default is 1em = 14px = the font-size of the current element
+        // border between columns
+        -moz-column-rule: .1rem solid $color-grey-dark-2;
+
+        // set number of columns
+        column-count: 2;
+        // set the gap between them
+        column-gap: 4rem; // --> by default is 1em = 14px = the font-size of the current element
+        // border between columns
+        column-rule: .1rem solid $color-grey-dark-2;
+
+        // automatically figure out where to put hyphens (-) when text starts new line
+        // it depends on document's language set in HTML e.g. <html lang="en">
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+
+        // in reality we should not put prefixes manually, instead we should use tools such as Autoprefixer
+    }
+
+}
