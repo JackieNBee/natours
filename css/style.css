@@ -1,3 +1,17 @@
+/*
+0px - 600px:        Phone --> max-width
+600px - 900px:      Tablet portrait --> max-width
+900px - 1200px:     Tablet landscape --> max-width
+[1200px - 1800px] is where our normal styles apply
+1800px+ :           Big desktop --> min-width
+*/
+/*
+$breakpoint argument choises:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
 /* CSS Animations */
 @keyframes moveInLeft {
   0% {
@@ -56,6 +70,15 @@ html {
   /* 100% = 16px */
   /* proportion used for value calculation: 100:16 = x:10 */
   font-size: 62.5%; }
+  @media (max-width: 75rem) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25rem) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5rem) {
+    html {
+      font-size: 75%; } }
 
 body {
   /* box-sizing gets inherited by all elements */
