@@ -71,4 +71,11 @@ html {
 body {
     /* box-sizing gets inherited by all elements */
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        // width < 900px?
+        // get rid of the padding
+        padding: 0;
+    }
 }

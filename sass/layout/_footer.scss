@@ -5,6 +5,12 @@
     font-size: 1.4rem;
     color: $color-grey-light-1;
 
+    // when screen shrinks into tablet portrait mode
+    // reduce the padding
+    @include respond(tab-port) {
+        padding: 8rem 0;
+    }
+
     &__logo-box {
         // to center the logo img
         // which is an inline element that behaves like text
@@ -12,8 +18,6 @@
         // to put some space under the logo
         // we could have also used u-margin-bottom-big in the HTML
         margin-bottom: 8rem;
-
-
     }
 
     &__logo {
@@ -29,6 +33,12 @@
         // to make the line as long as the list
         // since inline-bock elements occupy only the space the content needs
         display: inline-block;
+
+        // when screen shrinks into tablet portrait mode
+        @include respond(tab-port) {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     &__list {
@@ -84,5 +94,11 @@
         // reduce the width and float the content to the right
         width: 80%;
         float: right;
+
+        // when screen shrinks into tablet portrait mode
+        @include respond(tab-port) {
+            width: 100%;
+            float: none;
+        }
     }
 }

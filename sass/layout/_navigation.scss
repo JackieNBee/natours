@@ -20,6 +20,20 @@
         // to horizontally center the button's icon (3 lines)
         text-align: center;
         cursor: pointer;
+
+        // when screen shrinks into tablet portrait mode
+        // change nav button position
+        @include respond(tab-port) {
+            top: 4rem;
+            right: 4rem;
+        }
+
+        // when screen shrinks into phone mode
+        // change nav background position
+        @include respond(phone) {
+            top: 3rem;
+            right: 3rem;
+        }
     }
 
     &__background {
@@ -42,6 +56,20 @@
         // cubic-bezier() lets us customize animation's timing function even more!
         // this cubic-bezier is called "easeInOutQuint"
         transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
+
+        // when screen shrinks into tablet portrait mode
+        // change nav background position
+        @include respond(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        // when screen shrinks into phone mode
+        // change nav background position
+        @include respond(phone) {
+            top: 3.5rem;
+            right: 3.5rem;
+        }
 
     }
 
