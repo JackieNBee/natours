@@ -41,7 +41,7 @@
             background-color: $color-white;
         }
 
-        // the back side needs to be alreadt flipped
+        // the back side needs to be already flipped
         &--back {
 
             // flips by 180deg
@@ -192,6 +192,7 @@
     }
 
     // *** BACK SIDE STYLING ***
+    // container of price-box and booking button
     &__cta {
         // to center it vertically and horizontally
         position: absolute;
@@ -220,6 +221,77 @@
         font-size: 6rem;
         // Good Practice: make huge text thin
         font-weight: 100;
+    }
+
+    // when the screen shrinks to tablet portrait mode
+    // show the back-side under the front-side as single card
+    // TECHNIQUE: since it's like a rewrite of the card, first copy all the card's code inside this media query
+    // then change what needs to be changed and delete what we want to keep of the previous style
+    @include respond(tab-port) {
+
+        // it's no more necessary to have both cards we same height
+        height: auto;
+        // add the border radius around the whole card since both sides now are shown together
+        border-radius: 3px;
+        // add background color to the container in order to fix the white space caused by clip-path
+        background-color: $color-white;
+        // add shadow around the card container, this replaces the box-shadow of both card sides
+        box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: .15);
+
+        // .card__side
+        &__side {
+
+            height: auto;
+            // no more need for both sides to occupy same space
+            position: relative;
+            // remove both shadow from one side because now both sides are glued together
+            box-shadow: none;
+
+            &--back {
+                // the back side no longer needs to be flipped
+                transform: rotateY(0);
+                // add oblique cut on the top
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            }
+
+        }
+
+        // no longer needs to rotate the front-side on hover
+        &:hover &__side--front {
+            transform: rotateY(0);
+        }
+
+        &__details {
+            // reduce some top and bottom padding
+            padding: 1rem 3rem;
+        }
+
+        // *** BACK SIDE STYLING ***
+        // container of price-box and booking button
+        &__cta {
+            // no longer need to center it vertically and horizontally
+            position: relative;
+            top: 0;
+            left: 0;
+            // no longer need to do any transformations
+            transform: translate(0);
+            // make it occupy all the available width
+            width: 100%;
+            // add some padding
+            // more on the top do have some more space from the ex front-side
+            padding: 7rem 4rem 4rem 4rem;
+        }
+
+        &__price-box {
+            // reduce the margin
+            margin-bottom: 3rem;
+        }
+
+        &__price-value {
+            // decrease font-size
+            font-size: 4rem;
+        }
+
     }
 
 

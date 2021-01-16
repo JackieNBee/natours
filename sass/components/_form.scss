@@ -27,6 +27,12 @@
         // add animation for displaying underline on :focus
         transition: all .3s;
 
+        // when screen shrinks to tablet portrait mode
+        @include respond(tab-port) {
+            // make the input occupy the whole available width
+            width: 100%;
+        }
+
         // focus state
         // when we click on the input
         &:focus {
@@ -86,6 +92,14 @@
         width: 49%;
         // to display them side by side instead of using float
         display: inline-block;
+
+        // when screen shrinks to tabled portrait mode
+        @include respond(tab-port) {
+            // make the radio groups on top of the other
+            width: 100%;
+            // put some space between them
+            margin-bottom: 2rem;
+        }
     }
 
     &__radio-input {

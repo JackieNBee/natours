@@ -96,19 +96,57 @@
             rgba($color-white, .9) 50%,
             transparent 50%),
         url(../img/nat-10.jpg);
-    // cover = 100% -> they are interchangeable
+    // cover = 100% -> they are kinda the same
+    // 100% means: ensure the image fits the container in the X direction
     background-size: 100%;
     // TODO: put 3px into a variable since we're using it a lot
     border-radius: 3px;
     // if you have a dark background, the shadow should also be darker
     box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
 
-    height: 50rem;
+    // height: 50rem; // For TESTING porpouses
+
+    // when screen shrinks to tablet landscape mode
+    @include respond(tab-land) {
+        // increse the colored part over the background image
+        background-image: linear-gradient(105deg,
+                rgba($color-white, .9) 0%,
+                rgba($color-white, .9) 65%,
+                transparent 65%),
+            url(../img/nat-10.jpg);
+
+        // this time make sure to backgroud image cover the entire container
+        background-size: cover;
+    }
+
+    // when screen shrinks to tablet portrait mode
+    @include respond(tab-port) {
+        // cover the image with white color
+        // the deg doesn't matter ant
+        background-image: linear-gradient(to right,
+                rgba($color-white, .9) 0%,
+                rgba($color-white, .9) 100%),
+            url(../img/nat-10.jpg);
+
+    }
+
 
     &__form {
         // since the form needs to be in the colored half
-        width: 50%;
+        width: 65%;
         padding: 6rem;
+
+        // when screen shrinks to tablet landscape mode
+        @include respond(tab-land) {
+            // increase the form width
+            width: 65%;
+        }
+
+        // when screen shrinks to tablet portrait mode
+        @include respond(tab-port) {
+            // increase the form width
+            width: 100%;
+        }
     }
 
 }

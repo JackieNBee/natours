@@ -23,6 +23,24 @@
     // }
 
 
+    // when screen shrinks to tablet portrait mode
+    @include respond(tab-port) {
+        // occupy row full width
+        width: 100%;
+        // reduce padding so there's more space for the text
+        padding: 4rem;
+        // left padding should be more in order to shift the content more to the left
+        // because of the oblique cut
+        padding-left: 7rem;
+    }
+
+    // when screen shrinks to phone mode
+    @include respond(phone) {
+        // remove oblique cuts style
+        // remember to remove this effect also in the children!
+        transform: skewX(0);
+    }
+
 
     &__shape {
         width: 15rem;
@@ -48,6 +66,13 @@
 
         // to make the caption absolute position work
         position: relative;
+
+        // when screen shrinks to phone mode
+        @include respond(phone) {
+            // no more need to compensate the skew
+            // since the oblique style has been removed
+            transform: translateX(-3rem) skewX(0);
+        }
     }
 
     &__img {
@@ -67,6 +92,13 @@
     &__text {
         // to undo the skew effect
         transform: skewX(12deg);
+
+        // when screen shrinks to phone mode
+        @include respond(phone) {
+            // no more need to compensate the skew
+            // since the oblique style has been removed
+            transform: skewX(0);
+        }
     }
 
     &__caption {
