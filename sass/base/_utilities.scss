@@ -13,10 +13,22 @@
 // Add bottom margin
 .u-margin-bottom-big {
     margin-bottom: 8rem !important;
+
+    // when screen shrinks into tablet portrait mode
+    // reduce the margin
+    @include respond(tab-port) {
+        margin-bottom: 5rem !important;
+    }
 }
 
 .u-margin-bottom-medium {
     margin-bottom: 4rem !important;
+
+    // when screen shrinks into tablet portrait mode
+    // reduce the margin
+    @include respond(tab-port) {
+        margin-bottom: 3rem !important;
+    }
 }
 
 .u-margin-bottom-small {

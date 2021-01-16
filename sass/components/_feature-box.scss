@@ -7,6 +7,12 @@
     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
     transition: transform .2s;
 
+    // when screen shrinks into tablet portrait mode
+    // reduce the padding
+    @include respond(tab-port) {
+        padding: 2rem;
+    }
+
     &__icon {
         // the icon is actually a text
         font-size: 6rem;
@@ -21,6 +27,12 @@
         -webkit-background-clip: text;
         // 4) Set text color to transparent in order to see only background's one
         color: transparent;
+
+        // when screen shrinks into tablet portrait mode
+        // delete the bottom margin
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
     }
 
     &:hover {

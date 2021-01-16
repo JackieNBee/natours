@@ -18,6 +18,11 @@
         // to put some space under the logo
         // we could have also used u-margin-bottom-big in the HTML
         margin-bottom: 8rem;
+
+        // when screen shrinks into tablet portrait mode
+        @include respond(tab-port) {
+            margin-bottom: 6rem;
+        }
     }
 
     &__logo {

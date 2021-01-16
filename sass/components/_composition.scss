@@ -20,21 +20,66 @@
         // space between offset and img
         outline-offset: 2rem;
 
+        // when screen shrinks into tablet portrait mode
+        // change the composition of the imgs
+        // float them side by side
+        @include respond(tab-port) {
+            float: left;
+            // to make float work
+            position: relative;
+            // all the 3 imgs occupy the same width
+            width: 33.33333333%;
+            // slightly less pronounced shadow
+            box-shadow: 0 1.5rem 3rem rgba($color-black, .2);
+        }
+
         // selecting imgs one by one
         // .composition__photo--p1
         &--p1 {
             left: 0;
             top: -2rem;
+
+            // when screen shrinks into tablet portrait mode
+            @include respond(tab-port) {
+                // undo the values
+                top: 0;
+
+                // make img bigger
+                transform: scale(1.2);
+            }
         }
 
         &--p2 {
             right: 0;
             top: 2rem;
+
+            // when screen shrinks into tablet portrait mode
+            @include respond(tab-port) {
+                // move it up
+                top: -1rem;
+
+                // make img bigger
+                transform: scale(1.3);
+
+                // show it above of the other imgs
+                z-index: 100;
+            }
         }
 
         &--p3 {
             left: 20%;
             top: 10rem;
+
+            // when screen shrinks into tablet portrait mode
+            @include respond(tab-port) {
+                // undo the value
+                left: 0;
+                // move it down
+                top: 1rem;
+
+                // make img bigger
+                transform: scale(1.1);
+            }
         }
 
         &:hover {

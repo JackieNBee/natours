@@ -7,10 +7,10 @@
     margin-top: -20vh;
 
     // when screen shrinks into tablet portrait mode
-    // add some padding between section-about and header
-    // @include respond(tab-port) {
-    //     // padding-top: 30rem;
-    // }
+    // reduce the padding... I prefer to comment this part!
+    @include respond(tab-port) {
+        padding: 20rem 0;
+    }
 }
 
 .section-features {
@@ -39,23 +39,48 @@
     // if we used directly & * we would have selected all the children of the children
     // leading to a wrong design --> every descendants being skewed too much
 
+    // when screen shrinks into tablet portrait mode
+    // reduce the padding to make it more symmetrical with the section above
+    // because of the oblique cut
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+
 }
 
 .section-tours {
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0;
     margin-top: -10rem;
+
+    // when screen shrinks into tablet portrait mode
+    // reduce the padding
+    @include respond(tab-port) {
+        padding: 20rem 0 10rem 0;
+    }
 }
 
 .section-stories {
     // to be able to put a video as the background
     position: relative;
     padding: 15rem 0;
+
+    // when screen shrinks into tablet portrait mode
+    // reduce the padding
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .section-book {
     padding: 15rem 0;
     background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+    // when screen shrinks into tablet portrait mode
+    // reduce the padding
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .book {
